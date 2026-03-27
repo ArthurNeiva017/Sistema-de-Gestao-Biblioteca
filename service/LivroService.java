@@ -32,8 +32,10 @@ public class LivroService {
     }
 
     public void alterar(Livro livro) {
+    	livroRepository.atualizar(livro);
     }
 
     public void remover(int id) {
+    	livroRepository.deletar(id);
     }
 }

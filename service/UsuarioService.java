@@ -40,8 +40,10 @@ public class UsuarioService {
     }
 
     public void alterar(Usuario usuario) {
+    	usuarioRepository.atualizar(usuario);
     }
 
     public void remover(int id) {
+    	usuarioRepository.deletar(id);
     }
 }
