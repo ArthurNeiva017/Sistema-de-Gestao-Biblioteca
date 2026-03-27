@@ -17,7 +17,6 @@ public class LivroController {
     }
     
     public void cadastrar(Livro livro) {
-    	//Validação Básica
     	if(livro.getNome() != "" && livro.getAutor() != "") {
     		livroService.cadastrar(livro);
     	}else { 
@@ -30,12 +29,9 @@ public class LivroController {
         return livro;
     }
 
+    
     public List<Livro> buscarPorNome(String nome) {
-    	if(nome != "" && nome != null) {
-    		return livroService.buscarPorNome(nome);
-    	} else {
-    		return new ArrayList<Livro>();
-    	}
+        return livroService.buscarPorNome(nome);
     }
 
     public List<Livro> listarTodos() {
