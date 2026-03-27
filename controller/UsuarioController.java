@@ -17,36 +17,47 @@ public class UsuarioController {
     }
 
     public void cadastrar(Usuario usuario) {
-    	if(usuario.getNome() != "" && usuario.getCpf() != "") {
+    	if (usuario == null) {
+    		System.out.println("O usuário não está preenchido");
+    	} else {
     		usuarioService.cadastrar(usuario);
-    	}else { 
-    		System.out.println("Erro coloque o Nome ou CPF incorretos!");
     	}
     }
 
     public Usuario buscarPorId(int id) {
-    	Usuario usuario = usuarioService.buscarPorId(id);
-        return usuario;
-        
-    }
-
+    	if (id <= 0) {
+    		System.out.println("Id inválido");
+    		return null;
+    	} else {
+    		return usuarioService.buscarPorId(id);
+    	} 
+    	
+	} 
     public Usuario buscarPorCpf(String cpf) {
-    	Usuario usuario = usuarioService.buscarPorCpf(cpf);
-        return usuario;
+    	if (cpf == null) {
+    		System.out.println("O cpf não está preenchido");
+    		return null;
+    	} else {
+    		return usuarioService.buscarPorCpf(cpf);
+    	}
     }
 
     public Usuario buscarPorEmail(String email) {
-    	Usuario usuario = usuarioService.buscarPorEmail(email);
-        return usuario;
+    	if (email == null) {
+    		System.out.println("O email não está preenchido");
+    		return null;
+    	} else {
+    		return usuarioService.buscarPorEmail(email);
+    	}
     }
 
     public List<Usuario> buscarPorNome(String nome) {
-    	if(nome != "" && nome != null) {
-    		return usuarioService.buscarPorNome(nome);
+    	if (nome == null) {
+    		System.out.println("O nome não está preenchido");
+    		return null;
     	} else {
-    		return new ArrayList<Usuario>();
+    		return usuarioService.buscarPorNome(nome);
     	}
-       
     }
 
     public List<Usuario> listarTodos() {
@@ -55,10 +66,17 @@ public class UsuarioController {
     }
 
     public void alterar(Usuario usuario) {
-    	usuarioService.alterar(usuario);
+    	if (usuario == null) {
+    		System.out.println("O usuário não está preenchido");
+    	} else {
+    		usuarioService.alterar(usuario);
+    	}
     }
-
     public void remover(int id) {
-    	usuarioService.remover(id);
+    	if (id <= 0) {
+    		System.out.println("Id inválido do Usuario");
+    	} else {
+    		usuarioService.remover(id);
+    	}
     }
 }

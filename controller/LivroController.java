@@ -17,21 +17,30 @@ public class LivroController {
     }
     
     public void cadastrar(Livro livro) {
-    	if(livro.getNome() != "" && livro.getAutor() != "") {
+    	if (livro == null) {
+    		System.out.println("O livro não está registrado");
+    	} else {
     		livroService.cadastrar(livro);
-    	}else { 
-    		System.out.println("Erro coloque o nome certo do livro!");
     	}
     }
-
+    
     public Livro buscarPorId(int id) {
-    	Livro livro = livroService.buscarPorId(id);
-        return livro;
+    	if (id <= 0) {
+    		System.out.println("Id inválido ou Não Encontrado");
+    		return null;
+    	} else {
+    		return livroService.buscarPorId(id);
+    	}
     }
 
     
     public List<Livro> buscarPorNome(String nome) {
-        return livroService.buscarPorNome(nome);
+    	if (nome == null) {
+    		System.out.println("O nome não está registrado");
+    		return null;
+    	} else {
+    		return livroService.buscarPorNome(nome);
+    	}
     }
 
     public List<Livro> listarTodos() {
@@ -40,10 +49,20 @@ public class LivroController {
     }
 
     public void alterar(Livro livro) {
-    	livroService.alterar(livro);
+    	if (livro == null) {
+    		System.out.println("O livro não está registrado");
+    		throw new RuntimeException("ERRO livro não está registrado");
+    	} else {
+    		livroService.alterar(livro);
+    	}
     }
 
     public void remover(int id) {
-    	livroService.remover(id);
+    	if (id <= 0) {
+    		System.out.println("Id inválido do Livro");
+    		throw new RuntimeException("ERRO ID inválido");
+    	} else {
+    		livroService.remover(id);
+    	}
     }
 }

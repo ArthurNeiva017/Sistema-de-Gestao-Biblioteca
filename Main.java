@@ -33,9 +33,12 @@ public class Main {
 
                     System.out.print("Autor: ");
                     String autor = scanner.nextLine();
+                    
+                    System.out.print("Edicao: ");
+                    int edicao = Integer.parseInt(scanner.nextLine());
 
                    
-                    Livro livro = new Livro(id, nome, autor, id, id);
+                    Livro livro = new Livro(id, nome, autor, id, edicao);
                     livroController.cadastrar(livro);
 
                     System.out.println("Livro cadastrado com sucesso.\n");
