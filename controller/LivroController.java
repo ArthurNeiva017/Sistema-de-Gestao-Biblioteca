@@ -1,4 +1,5 @@
 package controller;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Livro;
@@ -16,23 +17,37 @@ public class LivroController {
     }
     
     public void cadastrar(Livro livro) {
+    	//Validação Básica
+    	if(livro.getNome() != "" && livro.getAutor() != "") {
+    		livroService.cadastrar(livro);
+    	}else { 
+    		System.out.println("Erro coloque o nome certo do livro!");
+    	}
     }
 
     public Livro buscarPorId(int id) {
-        return null;
+    	Livro livro = livroService.buscarPorId(id);
+        return livro;
     }
 
     public List<Livro> buscarPorNome(String nome) {
-        return null;
+    	if(nome != "" && nome != null) {
+    		return livroService.buscarPorNome(nome);
+    	} else {
+    		return new ArrayList<Livro>();
+    	}
     }
 
     public List<Livro> listarTodos() {
-        return null;
+    	
+        return livroService.listarTodos();
     }
 
     public void alterar(Livro livro) {
+    	livroService.alterar(livro);
     }
 
     public void remover(int id) {
+    	livroService.remover(id);
     }
 }
