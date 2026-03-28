@@ -1,4 +1,5 @@
 package controller;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Livro;
@@ -16,23 +17,52 @@ public class LivroController {
     }
     
     public void cadastrar(Livro livro) {
+    	if (livro == null) {
+    		System.out.println("O livro não está registrado");
+    	} else {
+    		livroService.cadastrar(livro);
+    	}
     }
-
+    
     public Livro buscarPorId(int id) {
-        return null;
+    	if (id <= 0) {
+    		System.out.println("Id inválido ou Não Encontrado");
+    		return null;
+    	} else {
+    		return livroService.buscarPorId(id);
+    	}
     }
 
+    
     public List<Livro> buscarPorNome(String nome) {
-        return null;
+    	if (nome == null) {
+    		System.out.println("O nome não está registrado");
+    		return null;
+    	} else {
+    		return livroService.buscarPorNome(nome);
+    	}
     }
 
     public List<Livro> listarTodos() {
-        return null;
+    	
+        return livroService.listarTodos();
     }
 
     public void alterar(Livro livro) {
+    	if (livro == null) {
+    		System.out.println("O livro não está registrado");
+    		throw new RuntimeException("ERRO livro não está registrado");
+    	} else {
+    		livroService.alterar(livro);
+    	}
     }
 
     public void remover(int id) {
+    	if (id <= 0) {
+    		System.out.println("Id inválido do Livro");
+    		throw new RuntimeException("ERRO ID inválido");
+    	} else {
+    		livroService.remover(id);
+    	}
     }
 }
