@@ -16,32 +16,34 @@ public class UsuarioService {
     }
 
     public Usuario cadastrar(Usuario usuario) {
-        return null;
+        return usuarioRepository.salvar(usuario);
     }
 
     public Usuario buscarPorId(int id) {
-        return null;
+        return usuarioRepository.buscarPorId(id);
     }
 
     public Usuario buscarPorCpf(String cpf) {
-        return null;
+        return usuarioRepository.buscarPorCpf(cpf);
     }
 
     public Usuario buscarPorEmail(String email) {
-        return null;
+        return usuarioRepository.buscarPorEmail(email);
     }
 
     public List<Usuario> buscarPorNome(String nome) {
-        return null;
+        return usuarioRepository.buscarPorNome(nome);
     }
 
     public List<Usuario> listarTodos() {
-        return null;
+        return usuarioRepository.listarTodos();
     }
 
     public void alterar(Usuario usuario) {
+    	usuarioRepository.atualizar(usuario);
     }
 
     public void remover(int id) {
+    	usuarioRepository.deletar(id);
     }
 }
